@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from '@angular/common';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -54,8 +56,13 @@ export class AppComponent implements OnInit {
     console.log(selectedData);
     this.selectedData = selectedData;
   }
+  
+  isHome() {
+    const title = this.location.prepareExternalUrl(this.location.path());
+    return title.indexOf('home') >= 0;
+  }
 
-  constructor() { }
+  constructor( private location: Location) { }
 
   ngOnInit() {}
 }
